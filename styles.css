@@ -1,0 +1,258 @@
+*{
+    margin:0;
+    padding:0;
+}
+*:focus{
+    outline: none;
+}
+:root{
+    /* --opaci:0; */
+    --left:-2%;
+    --right:0%;
+}
+body{
+    position: relative;
+    height:100vh;
+    background-image:url('./images/bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center ;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    position:relative;
+    width:40vw;
+    display: flex;
+    flex-direction: column;
+    padding:2.5% 2%; 
+    align-items: center;
+    box-shadow:0 0.1rem 0.4rem 0 black;
+}
+.container::before{
+    content:"";
+    position:absolute;
+    background-color: white;
+    z-index:-1;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    opacity:0.8;
+
+}
+/* search bar */
+.search{
+    padding:3%;
+    position: relative;
+    width:38vw;
+    height:7vh;
+    display: grid;
+    grid-template-columns:20fr 6fr 3fr;
+    grid-template-rows: 1fr;   
+}
+.search::before{
+    position: absolute;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    content:"";
+    background-color: silver;
+    z-index:-1;
+    opacity:0.3;
+}
+.search input,.search::placeholder{
+    font-family: 'Ubuntu', sans-serif;
+    font-size:1.4rem;
+    text-align: center;
+    border:2px solid black;
+    box-shadow:0 0.1rem 0.7rem 0 black;
+    transition-property: all;
+    transition-duration:0.3s;
+}
+.search input{
+    width:100%;
+}
+.search input:focus{
+    transform: scale(1.05);
+}
+.btn{
+    font-size:1.2rem;
+    border:2px solid black;
+    color:black;
+    width:95%;
+    justify-self: end;
+    transition-property: all;
+    transition-duration: 0.3s;
+    box-shadow:0 0.1rem 0.7rem 0 black;
+}
+.my-location{
+    width:90%;
+    justify-self: end;
+    border:2px solid black;
+    transition-property: all;
+    transition-duration: 0.3s; 
+    box-shadow:0 0.1rem 0.7rem 0 black;
+}
+.btn:hover{
+    transform:scale(1.1);
+    color: white;
+    background-color: black;
+}
+.my-location:hover{
+    transform:scale(1.1);
+    background-color:black;
+    color: white;
+}
+.result{ 
+    /* display: grid; */
+    padding:3%;
+    position: relative;
+    margin-top:2rem;
+    height:60vh;
+    width:38vw;
+    grid-template-columns: 1fr;
+    grid-template-rows:2fr 2fr 3fr 2fr 2fr 2fr;
+    justify-items: center;
+    font-size:2rem;
+    font-family: 'Merriweather Sans', sans-serif;  
+    display: none; 
+    
+}
+.result::before{
+    content:"";
+    position: absolute;
+    background-color: silver;
+    height:100%;
+    width:100%;
+    z-index: -1;
+    opacity:0.3;
+}
+.city{
+    font-size:2.5rem;
+    text-align: center;
+    
+}
+
+.temp{
+    font-size:4rem;
+    color: indigo;
+}
+
+.cond{
+
+    align-self: flex-end;
+}
+
+.max-temp{
+    color:red;
+}
+.min-temp{
+    color:blue;
+}
+
+.country{
+    height:85%;
+    width:20%;
+  
+}
+.errMessage
+{
+    letter-spacing:1px;
+    font-size: 1.5rem;
+    color:black;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+}
+.slide-btn{
+    position: absolute;
+    top:5%;
+    right: 5%;
+    height:5%;
+    width:8%;
+    background-color: white;
+    border-radius:1rem;
+    border:1px solid black;
+    box-shadow:0.05rem 0.05rem 0.4rem 0 black;
+}
+.slide-btn::before{
+    content:"\00B0 F";
+    font-size:1rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background-color: black;
+    color: white;
+    height:113%;
+    width:60%;
+    z-index: 1;
+    top:-10%;
+    left:var(--left);
+    right:var(--right);
+    box-shadow:0.05rem 0.05rem 0.2rem 0 black;
+   
+}
+.slide-btn-pressed{
+    background-color: blue;
+
+}
+@media only screen and (max-width: 426px) {
+    .container{
+        width:90vw;
+    }
+    .search{
+        height:18vh  ;
+        grid-template-rows:1fr 1fr;  
+        grid-template-columns:8fr 7fr; 
+        width:83vw;
+    }
+    .result{
+        width:83vw;
+    }
+    .search input{
+        grid-column:1/span 2;   
+    }  
+    .btn{
+        width:40%;
+        justify-self: end;
+    }  
+    .my-location{
+        width:40%;
+        justify-self: start;
+    }
+    .slide-btn{
+        width:12%;
+    }
+
+}
+/* responsiveness */
+@media only screen and (min-width: 426px) and (max-width:770px){
+    .container{
+        width:60vw;
+    }
+    .search{
+        height:12vh  ;
+        grid-template-rows:1fr 1fr;  
+        grid-template-columns:8fr 7fr; 
+        width:58vw;
+    }
+    .result{
+        width:58vw;
+    }
+    .search input{
+        grid-column:1/span 2;   
+    }  
+    .btn{
+        width:30%;
+        justify-self: end;
+    }  
+    .my-location{
+        width:30%;
+        justify-self: start;
+    }
+
+}
